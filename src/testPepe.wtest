@@ -1,0 +1,44 @@
+import bonos.*
+import pepe.*
+import categorias.*
+
+describe "Test pepe"{
+	method initialize(){
+		pepe.setBonoResultado(bonoFijo)
+	}
+	test "Pepe gerente neto 10000"{
+		pepe.setCategoria(gerente)
+		assert.equals(10000, pepe.sueldoNeto())
+	}
+	test "Pepe cadete neto 15000"{
+		pepe.setCategoria(cadete)
+		assert.equals(15000, pepe.sueldoNeto())
+	}
+	
+	test "Pepe una falta"{
+		pepe.setBonoPresentismo(bonoDependenciaDeFaltas)
+		assert.equals(50, pepe.getBonoPresentismo().monto(pepe)())
+	}
+	
+	test "pepe cadete con 3 faltas" {
+		pepe.setBonoPresentismo(bonoDependenciaDeFaltas)
+	pepe.setCategoria(cadete)
+	pepe.setFaltas(3)
+	assert.equals(15000, pepe.sueldo())
+	
+	
+}
+
+}
+
+
+
+/*
+Hacer un test con pepe como cadete, con un bono resultado $80, y tiene un bono presentismo por faltas y falto 3 días. Debería tener $15080 de sueldo.
+
+Hacer un test con pepe como gerente, con un bono resultados de porcentaje, y con un bono de presentismo independiente de las faltas. El sueldo debe dar $11000.
+
+Testear por separado cada bono, con Pepe como gerente y como cadete (o sea, hacer dos assert por cada bono).
+
+
+*/
